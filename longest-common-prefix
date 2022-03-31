@@ -1,0 +1,46 @@
+//Question - https://leetcode.com/problems/longest-common-prefix/
+// Answer in CPP Time complexcity 0 MS 100.0% faster then another solution 
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string ans="";
+        bool flag=true;
+        int pos=0;
+        while(flag){
+            char val;
+            for(int i=0;i<strs.size();i++){
+                if(pos<strs[i].length()){
+                    if(i==0){
+                        val = strs[i][pos];
+                    } else {
+                        if(strs[i][pos]==val){
+                        } else {
+                             flag=false;
+                             break;
+                        }
+                    }
+                }
+                else{
+                    
+                    flag=false;
+                    break;
+                }
+                
+               
+                
+                
+        }
+        
+         if(flag){
+                    ans = ans + val;
+                }
+            pos++;
+            
+        }
+       return ans;
+    }
+};
+
+
+
