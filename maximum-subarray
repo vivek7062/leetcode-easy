@@ -1,0 +1,26 @@
+//Question - https://leetcode.com/problems/maximum-subarray/
+// Solution -> I have used kadne's Algo 
+
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int  maxSum = -2147483648 ;
+        int latestSum = 0;
+        
+        for(int i=0;i<nums.size();i++){
+            latestSum += nums[i];
+            if(latestSum>maxSum){
+                maxSum = latestSum;
+            }
+            
+            if(latestSum<0){
+                latestSum = 0;
+            }
+        }
+        
+        
+        
+        return maxSum;
+    }
+};
