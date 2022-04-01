@@ -1,0 +1,19 @@
+//Questions - https://leetcode.com/problems/merge-sorted-array/
+//Solution in CPP
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int pos=m;
+        for(int i=0;i<n;i++){
+            if(nums1.size()>pos){
+                nums1[pos]=nums2[i];
+                pos++;
+            } else{
+                nums1.push_back(nums2[i]);
+            }
+        }
+        
+        sort(nums1.begin(), nums1.end());
+    }
+};
