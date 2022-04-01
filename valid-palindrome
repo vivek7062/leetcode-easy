@@ -1,0 +1,45 @@
+//Questions https://leetcode.com/problems/valid-palindrome/
+// Solution in cpp
+
+class Solution {
+   
+public:
+    bool isPalindrome(string s) {
+        bool ans=true;
+         vector<char> str;
+        
+        for(int i=0;i<s.length();i++)
+        {
+            if(s[i]>=65&&s[i]<=90)
+            {
+                str.push_back(s[i]+32);
+            }
+            else if(s[i]>=48&&s[i]<=57)
+            {
+                str.push_back(s[i]);
+            }
+            else if(s[i]>=97&&s[i]<=122)
+            {
+                str.push_back(s[i]);
+            }
+        }
+        
+        int i=0,j=str.size()-1;
+        
+        while(i<j){
+            if(str[i]!=str[j]){
+                ans = false;
+                break;
+            } else{
+                i++;
+                j--;
+            }
+        }
+        
+        return ans;
+        
+    }
+    
+  
+    
+};
