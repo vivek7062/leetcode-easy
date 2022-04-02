@@ -1,0 +1,64 @@
+//Questions -> https://leetcode.com/problems/valid-palindrome-ii/
+//Solution in cpp
+
+class Solution {
+public:
+    bool validPalindrome(string s) {
+        int i=0;
+        int j= s.size()-1;
+        int deletecharCount=0;
+        int deletecharCount1=0;
+        bool ans=true;
+        
+        if(s.size()==3){
+            if(s[0]!= s[2]){
+                ans = false;
+            }
+        } else{
+             while(i<j){
+            if(deletecharCount<=1){
+                if(s[i]==s[j]){
+                    i++;
+                    j--;
+                } else{
+                    i++;
+                    deletecharCount++;
+                }
+            } else{
+                ans=false;
+                break;
+            }
+        }
+            
+            i=0;
+            j= s.size()-1;
+             while(i<j){
+            if(deletecharCount1<=1){
+                if(s[i]==s[j]){
+                    i++;
+                    j--;
+                } else{
+                    j--;
+                    deletecharCount1++;
+                }
+            } else{
+                ans=false;
+                break;
+            }
+        }
+        }
+        
+        if(s.size()!=3){
+            if(deletecharCount==1 || deletecharCount1==1){
+            ans =true;
+        } else if(deletecharCount==0 || deletecharCount1==0){
+            ans =true;
+        } else {
+            ans = false;
+        }
+        }
+       
+         
+        return ans;
+    }
+};
