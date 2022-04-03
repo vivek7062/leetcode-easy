@@ -1,0 +1,38 @@
+//Question -> https://leetcode.com/problems/reshape-the-matrix/
+//Solution in CPP
+//Bruteforce Approch
+
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        
+        vector<vector<int>> ans;
+        int row=1,colom=1;
+        vector<int> temp;
+        
+        if((mat.size()*mat[0].size())!=(r*c)){
+            return mat;
+        }
+        
+        for(int i=0;i<mat.size();i++){
+            
+            for(int j=0;j<mat[i].size();j++){
+                if(row<=r && colom<=c){
+                    temp.push_back(mat[i][j]);
+                    colom++;
+                    
+                }
+                if(colom>c){
+                        colom=1;
+                        ans.push_back(temp);
+                        temp={};
+                        row++;
+                    }
+            }
+            
+            
+        }
+        
+        return ans;
+    }
+};
