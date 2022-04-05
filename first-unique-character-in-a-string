@@ -1,0 +1,27 @@
+//Question - https://leetcode.com/problems/first-unique-character-in-a-string/
+//Solution in cpp
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int ans=-1;
+        
+        for(int i=0;i<s.length();i++){
+            int flag=0;
+            for(int j=0;j<s.length();j++){
+                if(i!=j){
+                    if(s[i]==s[j]){
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag==0){
+                ans=i;
+                break;
+            }
+        }
+        
+        return ans;
+    }
+};
