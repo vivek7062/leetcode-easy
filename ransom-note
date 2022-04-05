@@ -1,0 +1,33 @@
+//Question -https://leetcode.com/problems/ransom-note/submissions/
+//Solution in cpp
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int ans = false;
+        int count=0;
+        
+    
+        for(int i=0;i<ransomNote.length();i++){
+            int flag=0;
+            for(int j=0;j<magazine.length();j++){
+                if(ransomNote[i]==magazine[j]){
+                    flag=1;
+                    count++;
+                    magazine.erase( magazine.begin() + j, magazine.begin() + j + 1);
+                    break;
+                }  
+            }
+            
+            if(flag==0){
+                break;
+            }
+        }
+        
+        if(count==ransomNote.size()){
+            ans=true;
+        }
+        
+        return ans;
+    }
+};
