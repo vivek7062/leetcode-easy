@@ -4,28 +4,19 @@
 class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {
-        
-        int ans;
+        int y,x;
         
          while(stones.size()>1){
              sort(stones.begin(),stones.end());
              int len=stones.size()-1;
-             if(stones[len]==stones[len-1]){
-                stones.erase(std::remove(stones.begin()+stones.size()-2, stones.end(), stones[len]), stones.end());
-             } 
-              else if(stones[len]>=stones[len-1]){
-                 stones[len]-=stones[len-1];
-                    stones.erase(std::remove(stones.begin()+stones.size()-2, stones.end()-1, stones[len-1]), stones.end()-1);
-             } else{
-                    stones[len-1]-=stones[len];
-                    stones.erase(std::remove(stones.begin()+stones.size()-1, stones.end(), stones[len]), stones.end());
+             y= stones[len];
+             x= stones[len-1];
+             stones.erase(stones.begin()+stones.size()-2, stones.end());
+             if(y-x>0){
+                 stones.push_back(y-x);
              }
          }
         
-        if(stones.size()==0){
-            return 0;
-        } 
-        
-        return stones[0];
+        return stones.empty()? 0 : stones[0];
     }
 };
