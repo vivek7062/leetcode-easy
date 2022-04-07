@@ -1,0 +1,31 @@
+// Question- https://leetcode.com/problems/last-stone-weight/
+//Answer in cpp
+
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        
+        int ans;
+        
+         while(stones.size()>1){
+             sort(stones.begin(),stones.end());
+             int len=stones.size()-1;
+             if(stones[len]==stones[len-1]){
+                stones.erase(std::remove(stones.begin()+stones.size()-2, stones.end(), stones[len]), stones.end());
+             } 
+              else if(stones[len]>=stones[len-1]){
+                 stones[len]-=stones[len-1];
+                    stones.erase(std::remove(stones.begin()+stones.size()-2, stones.end()-1, stones[len-1]), stones.end()-1);
+             } else{
+                    stones[len-1]-=stones[len];
+                    stones.erase(std::remove(stones.begin()+stones.size()-1, stones.end(), stones[len]), stones.end());
+             }
+         }
+        
+        if(stones.size()==0){
+            return 0;
+        } 
+        
+        return stones[0];
+    }
+};
