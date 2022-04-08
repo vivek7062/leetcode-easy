@@ -1,0 +1,31 @@
+//Question - https://leetcode.com/problems/pascals-triangle-ii/
+//Answer in cpp
+
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> ans,temp;
+      
+            if(rowIndex==0){
+                ans.push_back(1);
+            } else{
+                ans.push_back(1);
+                ans.push_back(1);
+            }
+            temp=ans;
+        
+        for(int i=2;i<=rowIndex;i++){
+            for(int j=1;j<i;j++){ 
+                if(j==i-1){
+                    ans.insert(ans.begin()+j,(temp[j-1]+temp[j]));
+                } else{
+                    ans[j]=temp[j-1]+temp[j];
+                }
+                
+            }
+             temp=ans;
+        }
+        
+        return ans;
+    }
+};
