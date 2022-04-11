@@ -1,0 +1,32 @@
+//Question - https://leetcode.com/problems/shift-2d-grid/
+//Answer in cpp
+
+class Solution {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int m = grid.size();
+        int n = grid[0].size();
+        k=k%(m*n);
+        
+        if(k==0){
+            return grid;
+        }
+        vector<int> temp,temp1;
+        for(int i=0;i<grid.size();i++){
+            temp.insert(temp.end(), grid[i].begin(), grid[i].end());
+        }
+        temp1.insert(temp1.end(),temp.begin()+(temp.size()-k),temp.end());
+        temp.erase(temp.begin()+(temp.size()-k),temp.end());
+        temp.insert(temp.begin(),temp1.begin(),temp1.end());
+        
+        int pos=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                grid[i][j]=temp[pos];
+                pos++;
+            }
+        }
+        
+        return grid;
+    }
+};
