@@ -1,0 +1,52 @@
+//Question - https://leetcode.com/problems/add-binary/
+//Answer in cpp 
+
+class Solution {
+public:
+   
+    string addBinary(string a, string b) {
+        string ans;
+        int carry=0;
+        if(a.size()<b.size()){
+            ans=a;
+            a=b;
+            b=ans;
+        }
+        ans="";
+        int lenb= b.size()-1;
+        for(int i=a.size()-1;i>=0;i--){
+            
+                int temp=0,btemp=0,atemp=0;
+                atemp = a[i]-48;
+                if(lenb>=0){
+                    btemp = b[lenb]-48;
+                }
+                 if(atemp==1 && btemp ==1){
+                     temp=carry;
+                     carry=1;
+                 } else{
+                     temp = atemp+btemp;
+                     if(temp==0){
+                         temp=temp+carry;
+                         carry=0;
+                     } else{
+                         if(carry==1){
+                             temp=0;
+                             carry=1;
+                         } else{
+                             temp=1;
+                             carry=0;
+                         }
+                     }
+                 }
+                ans = to_string(temp)+ans;
+           lenb--;
+        }
+        
+        if(carry){
+            ans = to_string(carry)+ans;
+        }
+        
+        return ans;
+    }
+};
