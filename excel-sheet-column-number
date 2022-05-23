@@ -1,0 +1,21 @@
+//Question - https://leetcode.com/problems/excel-sheet-column-number/
+//Answer in cpp
+
+class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+        int ans;
+        
+        for(int i=0;i<columnTitle.size();i++){
+            char c= columnTitle[i];
+            int ascii = c;
+            ascii = ascii-64;
+            if(i==0){
+                ans = ascii;
+            } else {
+                ans = (ans*26)+ascii;
+            }   
+        }
+        return ans ;
+    }
+};
