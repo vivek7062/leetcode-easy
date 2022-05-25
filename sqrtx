@@ -1,0 +1,23 @@
+//Question - https://leetcode.com/problems/sqrtx/
+//Answer in cpp
+
+class Solution {
+public:
+    int mySqrt(int x) {
+        long int i=0;
+        while(true){  //reducing loop 100*(n/100) times if n is larger 
+            if(i*i>x){
+                break;
+            }
+            i=100+i;
+        }
+        i=i-100;
+        while(true){
+            if(i*i>x){
+                break;
+            }
+            i++;
+        }
+        return i-1;
+    }
+};
