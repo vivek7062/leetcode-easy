@@ -1,0 +1,15 @@
+//Question - https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/
+//Answer in cpp
+
+class Solution {
+public:
+    int numberOfSteps(int num) {
+        int ans=0;
+        while(num){
+            if(num&1) num=num-1; // it will return last bit 0 for even and 1 for odd
+            else num=num>>1;  // right shift it will devide by 2
+            ans++;
+        }
+        return ans;
+    }
+};
