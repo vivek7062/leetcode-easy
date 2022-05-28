@@ -1,0 +1,36 @@
+//Question - https://leetcode.com/problems/ugly-number/
+//Answer in cpp
+
+class Solution {
+public:
+    bool isUgly(int n) {
+        int flag=0;
+        
+        while(n){
+            flag=0;
+            if(n%2==0){
+                n=n>>1;
+                flag=1;
+            }
+            if(n%3==0){
+                n=n/3;
+                flag=1;
+            }
+            if(n%5==0){
+                n=n/5;
+                flag=1;
+            }
+            
+            if(n==1){
+                return true;
+            }
+            
+            if(flag==0 ){
+                return false;
+            }
+        }
+        
+        return false;
+        
+    }
+};
