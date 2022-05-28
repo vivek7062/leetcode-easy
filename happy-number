@@ -1,0 +1,24 @@
+//Question - https://leetcode.com/problems/happy-number/
+//Answer in cpp 
+
+class Solution {
+public:
+    bool isHappy(int n) {
+       
+        while(true){
+            int temp=n,temp1=0;
+            while(temp){
+                temp1=temp1+pow(temp%10,2);
+                temp=temp/10;
+            }
+            n=temp1;
+            if(n==1 || n==7){
+                return true;
+            } else if(n<10){
+                return false;
+            }
+        }
+        return n==1;
+    }
+    
+};
