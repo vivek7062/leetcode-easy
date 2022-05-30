@@ -1,0 +1,11 @@
+//Question - https://leetcode.com/problems/concatenation-of-array/
+//Answer in cpp 
+
+
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        nums.insert(std::end(nums), std::begin(nums), std::end(nums));
+        return nums;
+    }
+};
