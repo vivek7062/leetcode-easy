@@ -1,0 +1,15 @@
+//Question - https://leetcode.com/problems/xor-operation-in-an-array/
+//Answer in cpp
+
+class Solution {
+public:
+    int xorOperation(int n, int start) {
+        int ans=0;
+        for(int i=start;;i=i+2){
+            if(n) ans = ans ^ i;
+            else  break;
+            n--;
+        }
+        return ans;
+    }
+};
