@@ -1,0 +1,18 @@
+//Question - https://leetcode.com/problems/running-sum-of-1d-array/
+/Answer in cpp
+
+class Solution {
+public:
+    vector<int> runningSum(vector<int>& nums) {
+        int ans=0,sum=0 ,temp=0,prev=0;
+        for(int i=nums.size()-1;i>=0;i--){
+            sum+=nums[i];
+        }
+         for(int i=nums.size()-1;i>=0;i--){
+             prev=nums[i];
+             nums[i]=sum-temp;
+             temp=temp+prev;
+        }
+        return nums;
+    }
+};
