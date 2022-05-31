@@ -1,0 +1,22 @@
+//Question - https://leetcode.com/problems/kth-missing-positive-number/
+//Answer in cpp
+
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        int j=0;
+        if(arr[0]>k) return k;
+        for(int i=0;i<arr.size();i++){
+            if(arr[i]-j<=k){
+                k=k-(arr[i]-j-1);
+                j=arr[i];
+            } else{
+                j=j+k;
+                break;
+            }
+        }
+        if(arr[arr.size()-1]==j) j=j+k;
+        
+        return j;
+    }
+};
