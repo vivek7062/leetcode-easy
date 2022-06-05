@@ -1,0 +1,16 @@
+// Question - https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+// Answer in cpp 
+
+
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        int ans=0;
+        for(int i=0;i<sentences.size();i++){
+            int len = std::count(sentences[i].cbegin(), sentences[i].cend(), ' ')+1;
+            ans = max(ans,len);
+        }
+        return ans;
+    }
+    
+};
