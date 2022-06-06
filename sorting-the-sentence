@@ -1,0 +1,31 @@
+//Question - https://leetcode.com/problems/sorting-the-sentence/
+// Answer in cpp
+
+
+class Solution {
+public:
+    string sortSentence(string s) {
+        vector<string> temp; 
+        string ans; 
+        string word;
+        stringstream iss(s);
+    
+        while (iss >> word){
+            temp.push_back(word);
+        }
+        
+        vector<string> orderTemp=temp;
+        
+        for(int i=0;i<temp.size();i++){
+            int pos = temp[i].back()-49;
+            orderTemp[pos] = temp[i].erase(temp[i].size()-1,temp[i].size());
+        }
+        
+        ans=orderTemp[0];
+        
+        for(int i=1;i<orderTemp.size();i++){
+            ans= ans+" "+orderTemp[i];
+        }
+        return ans;
+    }
+};
