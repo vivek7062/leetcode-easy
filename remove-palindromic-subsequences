@@ -1,0 +1,24 @@
+//Question - https://leetcode.com/problems/remove-palindromic-subsequences/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int removePalindromeSub(string s) {
+        if(s=="") return 0;
+        else if(ispalindrom(s)) return 1;
+        return 2;
+    }
+    bool ispalindrom(string s){
+        int f=0,l=s.size()-1;
+        while(f < l){
+            if(s[f]!=s[l]){
+                return false;
+                break;
+            }
+            f++;
+            l--;
+        }
+        return true;
+    }
+};
