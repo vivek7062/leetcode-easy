@@ -1,0 +1,17 @@
+// Question - https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
+// Answer in cpp
+
+
+class Solution {
+    int sum=0,mul=1;
+public:
+    int subtractProductAndSum(int n) {
+        if(!n) return mul-sum;
+        else {
+            mul *=n%10;
+            sum+=n%10;
+            n=n/10;
+        }
+        return subtractProductAndSum(n);
+    }
+};
