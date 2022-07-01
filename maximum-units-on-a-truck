@@ -1,0 +1,24 @@
+// Question - https://leetcode.com/problems/maximum-units-on-a-truck/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        int ans=0, minVal=0;
+        sort(boxTypes.begin(),boxTypes.end(),compare);
+        
+        for(int i=0;i<boxTypes.size() && truckSize>0;i++){
+                minVal = min(boxTypes[i][0],truckSize);
+                ans += minVal*boxTypes[i][1];
+                truckSize-=minVal;
+        }
+        
+        return ans;
+    }
+    
+    static bool compare(vector<int> &v1, vector<int> &v2){
+        return v1[1]>v2[1];
+    }
+};
