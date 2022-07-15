@@ -1,0 +1,19 @@
+// Question - https://leetcode.com/problems/design-parking-system/
+// Answer in cpp
+
+
+class ParkingSystem {
+public:
+    vector<int> temp;
+    ParkingSystem(int big, int medium, int small) {
+        temp = {big,medium,small};
+    }
+    
+    bool addCar(int carType) {
+        if(temp[carType-1]){
+            temp[carType-1]--;
+            return true;
+        }
+        return false;
+    }
+};
