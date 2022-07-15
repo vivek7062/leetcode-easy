@@ -1,0 +1,14 @@
+// Question - https://leetcode.com/problems/jewels-and-stones/
+// Answer in cpp
+
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        int ans=0;
+        unordered_set<char> set(jewels.begin(),jewels.end());
+        for(char c : stones){
+            if(set.count(c)) ans++;
+        }
+        return ans;
+    }
+};
