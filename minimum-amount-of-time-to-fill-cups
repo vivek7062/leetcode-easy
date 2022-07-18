@@ -1,0 +1,30 @@
+// Question - https://leetcode.com/problems/minimum-amount-of-time-to-fill-cups/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int fillCups(vector<int>& amount) {
+        int ans = 0,first,second;
+        priority_queue<int> pq(amount.begin(),amount.end());
+        
+        while(pq.top()>0){
+            first = pq.top();
+            pq.pop();
+            second=pq.top();
+            pq.pop();
+            
+            if(first>0 && second>0){
+                first--;
+                second--;
+            } else{
+                first--;
+            }
+            pq.push(first);
+            pq.push(second);
+            ans++;
+        }
+        
+        return ans;
+    }
+};
