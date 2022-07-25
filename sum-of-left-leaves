@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/sum-of-left-leaves/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        int ans=0;
+        if(!root) return ans;
+        sumLeaves(root,ans,0);
+        return ans;
+    }
+    
+    void sumLeaves(TreeNode* root, int & sum, int flag){
+        if(!root) return;
+        sumLeaves(root->left,sum,1);
+        sumLeaves(root->right,sum,0);
+        if(flag && !root->left && !root->right) sum+=root->val;
+    }
+};
