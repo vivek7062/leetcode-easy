@@ -1,0 +1,32 @@
+// Question - https://leetcode.com/problems/average-of-levels-in-binary-tree/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    vector<double> averageOfLevels(TreeNode* root) {
+        vector<double> ans;
+        vector<double> count;
+        levelValues(root,0,ans,count);
+        for(int i=0;i<ans.size();i++){
+            ans[i]/=count[i];
+        }
+        return ans;    
+    }
+    
+    void levelValues(TreeNode* root, int level, vector<double> &ans, vector<double> &count){
+        if(!root) return ;
+        if(ans.size()>level){
+            ans[level] += root->val;
+            count[level]+=1;
+        } else{
+            ans.push_back(root->val);
+            count.push_back(1);
+        }
+        levelValues(root->left,level+1, ans, count);
+        levelValues(root->right,level+1, ans, count);
+        
+        
+    }
+};
