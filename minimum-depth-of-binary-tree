@@ -1,0 +1,25 @@
+// Question - https://leetcode.com/problems/minimum-depth-of-binary-tree/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        int ans=INT_MAX;
+        if(!root) return 0;
+        depth(root,1,ans);
+        return ans;
+    }
+    
+    void depth(TreeNode* root, int level, int &ans){
+        if(!root){
+            return;
+        }
+        depth(root->left,level+1,ans);
+        depth(root->right,level+1,ans);
+        if(!root->left && !root->right){
+            ans = min(ans,level);
+        }
+        
+    }
+};
