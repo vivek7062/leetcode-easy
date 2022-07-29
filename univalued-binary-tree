@@ -1,0 +1,26 @@
+// Question - https://leetcode.com/problems/univalued-binary-tree/
+// Answer in cpp
+
+
+class Solution {
+    int val;
+public:
+    bool isUnivalTree(TreeNode* root) {
+        bool ans=true;
+        if(!root) return ans;
+        val = root->val;
+        travers(root,ans);
+        return ans;
+        
+    }
+    
+    void travers(TreeNode* root, bool &ans){
+        if(!root) return ;
+       
+        if(ans){
+            ans = val==root->val;
+            travers(root->left,ans);
+            travers(root->right,ans);
+        }
+    }
+};
