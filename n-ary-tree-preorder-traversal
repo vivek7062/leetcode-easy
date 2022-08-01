@@ -1,0 +1,21 @@
+// Question - https://leetcode.com/problems/n-ary-tree-preorder-traversal/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        vector<int> ans;
+        pre(root,ans);
+        return ans;
+    }
+    
+    void pre(Node* root,vector<int> &ans){
+        if(!root) return;
+        ans.push_back(root->val);
+        for(auto child : root->children){
+            pre(child,ans);
+        }
+        
+    }
+};
