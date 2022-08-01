@@ -1,0 +1,21 @@
+// Question - https://leetcode.com/problems/n-ary-tree-postorder-traversal/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<int> postorder(Node* root) {
+       vector<int> ans; 
+       post(root,ans);
+        return ans;
+    }
+    
+    void post(Node* root, vector<int> &ans){
+        if(!root) return ;
+        
+        for(auto child : root->children){
+            post(child,ans);
+        }
+        ans.push_back(root->val);
+    }
+};
