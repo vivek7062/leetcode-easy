@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/unique-morse-code-words/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+        vector<string> letters = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        unordered_set<string> set;
+        for(string s : words){
+            string temp="";
+            for(char c : s ){
+                temp+=letters[c-'a'];
+            }
+            set.insert(temp);
+        }
+        return set.size();
+    }
+};
