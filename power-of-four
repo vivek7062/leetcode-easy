@@ -1,0 +1,19 @@
+// Question - https://leetcode.com/problems/power-of-four/
+// Answer in cpp
+
+
+As we know how be construct binary number
+......1024 512 256 128 64 32 16 8 4 2 1
+here you can se power of 4 comming in alternative way like 1, 4 , 16
+1024 ... 256 ... 64 ... 16 ... 4 ... 1
+now if we take left shift of 1 by 2 (Because be will jump on 2 bits ) only 15 times so we will get all number which will power of 4 in this given range
+
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        int temp=1;
+        if(n==temp) return true;
+        for(int i=0;i<15;i++,temp=temp<<2) if(n==temp) return true;
+        return false;
+    }
+};
