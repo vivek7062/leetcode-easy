@@ -1,0 +1,4 @@
+// Question - https://leetcode.com/problems/customers-who-never-order/
+// Answer in SQL
+
+select name as Customers from Customers where id not in (select customerId from Orders)
