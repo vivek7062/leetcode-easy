@@ -1,0 +1,23 @@
+// Question - https://leetcode.com/problems/binary-tree-paths/
+// Answer in cpp
+
+
+
+class Solution {
+    vector<string> ans;
+public:
+    vector<string> binaryTreePaths(TreeNode* root) {
+        dfs(root,"");
+        return ans;
+    }
+    
+    void dfs(TreeNode* root,string str)
+    {
+        if(!root)  return;
+        if(str=="") str+=to_string(root->val);
+        else str+="->"+to_string(root->val);
+        dfs(root->left,str);
+        dfs(root->right,str);
+         if(!root->left && !root->right) ans.push_back(str);
+    }
+};
