@@ -1,0 +1,19 @@
+// Question - https://leetcode.com/problems/word-pattern/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        istringstream str(s);
+        map<char,int> mp1;
+        map<string,int> mp2;
+        int i=0;
+        for (string word; str >> word;i++)
+        {
+           if(i==pattern.size() || mp1[pattern[i]]!=mp2[word]) return false;
+            mp1[pattern[i]]=i+1,mp2[word]=i+1;  
+        }
+        return i==pattern.size();
+    }
+};
