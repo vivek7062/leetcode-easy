@@ -1,0 +1,19 @@
+// Question - https://leetcode.com/problems/find-target-indices-after-sorting-array/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        vector<int> ans;
+        int countTarget=0, smallNumberCount =0;
+        for(auto& num:nums){
+            if(num==target) countTarget++;
+            else if(num<target)smallNumberCount++;
+        }
+        while(countTarget--){
+            ans.push_back(smallNumberCount++);
+        }
+        return ans;
+    }
+};
