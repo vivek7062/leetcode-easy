@@ -1,0 +1,15 @@
+// Question - https://leetcode.com/problems/max-consecutive-ones/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int ans=0,count=0;
+        for(auto& num:nums){
+            if(num)ans = max(ans,++count);
+            else count=0;
+        }
+        return ans;
+    }
+};
