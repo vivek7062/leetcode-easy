@@ -1,0 +1,25 @@
+// Question - https://leetcode.com/problems/count-good-triplets/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int countGoodTriplets(vector<int>& arr, int a, int b, int c) {
+        int ans=0;
+        int len = arr.size();
+        
+        for(int i=0;i<len;i++){
+            for(int j=i+1;j<len;j++){
+                for(int k=j+1;k<len;k++){
+                    if(checkGood(arr[i],arr[j],arr[k],a,b,c)) ans++;
+                }
+            }
+        }
+        return ans;
+    }
+    
+    bool checkGood(int first,int second,int third,int a,int b, int c){
+        return abs(first-second)<=a && abs(second-third)<=b && abs(first-third)<=c;
+        return false;
+    }
+};
