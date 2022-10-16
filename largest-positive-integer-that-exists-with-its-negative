@@ -1,0 +1,21 @@
+// Question - https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int findMaxK(vector<int>& nums) {
+        map<int,int> neg;
+        vector<int> temp;
+        for(auto& num:nums){
+            if(num<0)neg[num]++;
+            else temp.push_back(num);
+        }
+        sort(temp.rbegin(),temp.rend());
+        for(auto& val:temp){
+            if(neg[-val]>0) return val;
+        }
+        
+        return -1;
+    }
+};
