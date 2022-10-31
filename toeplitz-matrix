@@ -1,0 +1,25 @@
+// Question - https://leetcode.com/problems/toeplitz-matrix/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int row = matrix.size() , col = matrix[0].size();
+        if(row==1 || col==1) return true;
+        for(int i=0;i<col-1;i++){
+            int rows=0,cols=i,val=matrix[rows][cols];
+            while(rows<row && cols<col){
+                if(matrix[rows++][cols++]!=val) return false;
+            }
+        }
+        for(int i=1;i<row-1;i++){
+            int rows=i,cols=0,val=matrix[rows][cols];
+            while(rows<row && cols<col){
+                if(matrix[rows++][cols++]!=val) return false;
+            }
+        }
+        
+        return true;
+    }
+};
