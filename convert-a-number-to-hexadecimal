@@ -1,0 +1,23 @@
+// Question - https://leetcode.com/problems/convert-a-number-to-hexadecimal/
+// Answer in cpp
+
+
+class Solution {
+public:
+    string toHex(int num1) {
+        if(!num1) return "0";
+        string ans="";
+        unsigned int num = num1;// Will Handle negetive number
+        int rem=0;
+        while(num){
+            rem=num%16;
+            num/=16;
+            ans = numToHex(rem)+ans;
+        }
+        return ans;
+    }
+    
+    char numToHex(int n){
+        return n<10?n+48:'a'+(n-10);
+    }
+};
