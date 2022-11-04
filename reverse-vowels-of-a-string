@@ -1,0 +1,21 @@
+// Question - https://leetcode.com/problems/reverse-vowels-of-a-string/
+// Answer in cpp
+
+
+class Solution {
+public:
+    string reverseVowels(string s) {
+        map<char,int> mp{{'A',1},{'E',1},{'I',1},{'O',1},{'U',1},{'a',1},{'e',1},{'i',1},{'o',1},{'u',1}};
+        int start=0,end=s.size()-1,len=end;
+        while(start<end){
+            while(start<=len && !mp[s[start]])start++;
+            while(end>=0 && !mp[s[end]]) end--;
+            if(start<end){
+                char temp = s[start];
+                s[start++] = s[end];
+                s[end--] = temp;
+            }
+        }
+        return s;
+    }
+};
