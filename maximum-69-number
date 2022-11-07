@@ -1,18 +1,32 @@
 1. Question - https://leetcode.com/problems/maximum-69-number/
 2. Answer in cpp
 
+Approach
+Just traverse number from right to left if we found 6 then convert to 9 and if we found again 6 then convert to 9 and make previous number 6 by subtracting pow(10,last)*3 where last is that counter of number from last where we did change number 6 to 9 priviouly.
+
+Complexity
+Time complexity:
+O(Log(n))
+
+Space complexity:
+O(1)
+
+Code
 class Solution {
 public:
     int maximum69Number (int num) {
-        int ans =num, rem=0,count=0,number=0,remTemp=0,tempNumber=0;
+        int ans=0,count=0,rem,last=0,flag=0;
         while(num){
-            rem = num %10;
-            num=num/10;
-            remTemp = (rem==6)?9:6; 
-            tempNumber = pow(10,(count+1)) * num + (number+(remTemp*(pow(10,count))));
-            ans= max(ans,tempNumber);
-            number =  (number+(rem*(pow(10,count))));
-            count = count+1;
+            rem = num%10;
+            num/=10;
+            if(rem==6){
+                if(flag) ans-= (pow(10,last)*3);
+                last=count;
+                rem=9;
+                flag=1;
+            }
+            ans = pow(10,count)*rem + ans;
+            count++;
         }
         return ans;
     }
