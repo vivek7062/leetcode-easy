@@ -1,0 +1,42 @@
+// Question - https://leetcode.com/problems/make-the-string-great/
+// Answer in cpp
+
+
+Code
+class Solution {
+public:
+    string makeGood(string s) {
+        if(s.size()==1) return s;
+        string ans="";
+        while(true){
+            string ans="";
+            int flag=1;
+            
+            for(int i=1;i<s.size();i++){
+                if(abs(s[i]-s[i-1])!=32){
+                    ans+=s[i-1];
+                    if(i==s.size()-1){
+                        ans+=s[i];
+                    }
+                } else{
+                    if(i==s.size()-2){
+                        ans+=s[i+1];
+                    }
+                    flag=0;
+                    i++;
+                }
+                
+            }
+            if(s.size()==1) return s;
+            if(ans.size()==1) return ans;
+            if(flag) return ans;
+            else {
+                s=ans;
+                ans="";
+            }
+
+        }
+        
+        return ans;
+    }
+};
