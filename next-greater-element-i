@@ -1,0 +1,37 @@
+// Question - https://leetcode.com/problems/next-greater-element-i/
+// Answer in cpp - https://leetcode.com/problems/next-greater-element-i/solutions/2799671/c-not-easy-but-similer-to-daily-temperature-o-n/
+
+
+Approach
+Just find next grather element for second array and store in map for each element because all element are distinct
+
+Complexity
+Time complexity:
+O(n)
+
+Space complexity:
+O(n)
+
+Code
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans;
+        unordered_map<int,int> mp;
+        stack<int> st;
+        for(int i=nums2.size()-1;i>=0;i--){
+            while(!st.empty() && nums2[i]>=nums2[st.top()]){
+                st.pop();
+            }
+            if(st.empty())  mp[nums2[i]] = -1;
+            else mp[nums2[i]] = nums2[st.top()];
+            st.push(i);
+            
+        }
+        for(int i=0;i<nums1.size();i++){
+            ans.push_back(mp[nums1[i]]);
+        }
+        return ans;    
+        
+        }
+};
