@@ -1,0 +1,27 @@
+// Question - https://leetcode.com/problems/determine-if-two-events-have-conflict/
+// Answer in cpp
+
+
+Complexity
+Time complexity:
+O(1)
+
+Space complexity:
+O(1)
+
+Code
+class Solution {
+public:
+    bool haveConflict(vector<string>& event1, vector<string>& event2) {
+        string st = "";
+        int firstStartHour = stoi(st+event1[0][0]+event1[0][1])*60+stoi(st+event1[0][3]+event1[0][4]);
+        int firstEndHour = stoi(st+event1[1][0]+event1[1][1])*60 +stoi(st+event1[1][3]+event1[1][4]);
+        int secondStartHour = stoi(st+event2[0][0]+event2[0][1])*60+stoi(st+event2[0][3]+event2[0][4]);
+        int secondEndHour = stoi(st+event2[1][0]+event2[1][1])*60+stoi(st+event2[1][3]+event2[1][4]);
+        
+        if((firstStartHour>=secondStartHour && firstStartHour<=secondEndHour)
+        || (firstEndHour>=secondStartHour && firstEndHour<=secondEndHour) || (secondStartHour>=firstStartHour && secondStartHour<=firstEndHour)|| (secondEndHour>=firstStartHour && secondEndHour<=firstEndHour)) return true;
+        
+        return false; 
+    }
+};
