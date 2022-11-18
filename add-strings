@@ -1,0 +1,53 @@
+// Question - https://leetcode.com/problems/add-strings/
+// Answer in cpp
+
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(1)
+
+Code
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        string ans="";
+        int len1 = num1.size()-1,len2=num2.size()-1;
+        int carry=0;
+        while(max(len1,len2)>=0){
+            if(len1>=0 && len2>=0){
+                int temp = num1[len1]-48+num2[len2]-48+carry;
+                cout<<temp<<endl;
+                carry=temp/10;
+                ans= to_string(temp%10)+ans;
+                len1--;
+                len2--;
+            } else {
+                break;
+            }
+           
+            
+        }
+        while(len1>=0){
+            int temp = num1[len1]-48+carry;
+                carry=temp/10;
+                ans= to_string(temp%10)+ans;
+                len1--;
+        }
+        while(len2>=0){
+            int temp =  num2[len2]-48+carry;
+                carry=temp/10;
+                ans= to_string(temp%10)+ans;
+                len2--;
+        }
+        
+        if(carry>0){
+                    ans= to_string(carry)+ans;
+                   
+                }
+
+        return ans;
+    }
+};
