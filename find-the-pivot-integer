@@ -1,0 +1,26 @@
+// Question - https://leetcode.com/problems/find-the-pivot-integer/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    int pivotInteger(int n) {
+        int i=1,x=n,sumleft=1,sumright=n;
+        while(i<=x){
+                if(sumleft<sumright){
+                    i+=1;
+                    sumleft+=i;
+                } else if(sumleft>sumright || i!=x){
+                    x-=1;
+                    sumright+=x;
+                } else{
+                    if(i==x) return i;
+                    return -1;
+                }
+            
+        }
+        
+        return -1;
+    }
+};
