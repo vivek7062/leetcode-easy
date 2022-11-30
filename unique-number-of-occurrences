@@ -1,0 +1,25 @@
+// Question - https://leetcode.com/problems/unique-number-of-occurrences/
+// Answer in cpp
+
+
+Approach
+Just count frequency and add in to set if there will any repeat frequency then set size will reduce respect to total unique number
+
+Complexity
+Time complexity:
+O(N)
+
+Space complexity:
+O(N)
+
+Code
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map<int,int> mp,repeat;
+        set<int> st;
+        for(auto& val:arr) mp[val]++;
+        for(auto& m:mp) st.insert(m.second);
+        return st.size()==mp.size();
+    }
+};
