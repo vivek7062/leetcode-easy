@@ -1,0 +1,17 @@
+//Question - https://leetcode.com/problems/determine-if-string-halves-are-alike/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+        map<char,int> mp;
+        mp = {{'a',1},{'e',1},{'i',1},{'o',1},{'u',1},{'A',1},{'E',1},{'I',1},{'O',1},{'U',1}};
+        int start=0,end = s.size()-1,leftcount=0,rightcount=0;
+        while(start<end){
+            if(mp[s[start++]]) leftcount++;
+            if(mp[s[end--]]) rightcount++;
+        }
+        return leftcount==rightcount;
+    }
+};
