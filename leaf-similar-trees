@@ -1,0 +1,19 @@
+// Question - https://leetcode.com/problems/leaf-similar-trees/
+// Answer in cpp
+
+
+class Solution {
+    vector<int>first,second;
+public:
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        dfs(root1,first);
+        dfs(root2,second);
+        return first==second;
+    }
+    void dfs(TreeNode* root, vector<int>& vec){
+        if(!root) return;
+        dfs(root->left,vec);
+        dfs(root->right,vec);
+        if(!root->left && !root->right) vec.push_back(root->val); 
+    }
+};
