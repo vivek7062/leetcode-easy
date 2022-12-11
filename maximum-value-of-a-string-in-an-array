@@ -1,0 +1,29 @@
+// Question - https://leetcode.com/problems/maximum-value-of-a-string-in-an-array/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+        int ans=strs.size();
+        int maxVal=0;
+        
+        for(auto& str:strs){
+            int len = str.size();
+            int flag=0;
+            int sum=0;
+             for(auto& ch :str){
+                int val = int(ch);
+                if(val>=48 && val<=57)sum = sum*10+(val-48);
+                 else{
+                    flag=1;
+                    break;
+                }
+                 
+                }
+                maxVal = flag==0?max(maxVal,sum):max(maxVal,len);  
+        }
+        
+        return maxVal;
+    }
+};
