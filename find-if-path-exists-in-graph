@@ -1,0 +1,75 @@
+// Question - https://leetcode.com/problems/find-if-path-exists-in-graph/
+// Answer in cpp
+
+
+Complexity
+Time complexity: O(m+n)
+where m = number of edges
+n = number of vertices
+
+Space complexity:
+O(N)
+
+Code
+BFS
+class Solution {
+    bool ans = false;
+    vector<int> visited;
+public:
+    bool validPath(int n, vector<vector<int>>& edges, int source, int dest) {
+        map<int,vector<int>> mp;
+        visited = vector(n,0);
+        queue<int> que;
+        for(auto& vec : edges){
+            mp[vec[0]].push_back(vec[1]);
+            mp[vec[1]].push_back(vec[0]);
+        }
+        que.push(source);
+        while(!que.empty()){
+            int size = que.size();
+            while(size--){
+                int front = que.front();
+                que.pop();
+                if(front==dest)return true;
+                visited[front]=1;
+                vector<int> temp = mp[front];
+                for(auto &val: temp){
+                    if(visited[val]==0){
+                        que.push(val);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+    
+};
+DFS
+ class Solution {
+     bool ans=false;
+     vector<int> visited;
+public:
+     bool validPath(int n, vector<vector<int>>& edges, int source, int dest) {
+         map<int,vector<int>> mp;
+         visited = vector(n,0);
+        for(auto& vec : edges){
+             mp[vec[0]].push_back(vec[1]);
+             mp[vec[1]].push_back(vec[0]);
+         }
+         dfs(mp,source,dest);
+         return ans;
+     }
+     void dfs(map<int,vector<int>> &mp ,int curr , int& dest){
+         if(curr==dest){
+             ans=true;
+             return ;
+         }
+
+         visited[curr]=1;
+         for(int i=0;i<mp[curr].size();i++){
+             if(visited[mp[curr][i]]==0 && !ans){
+                 dfs(mp,mp[curr][i],dest);
+             }
+         }
+     }
+ };
