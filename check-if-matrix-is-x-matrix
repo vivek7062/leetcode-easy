@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/check-if-matrix-is-x-matrix/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool checkXMatrix(vector<vector<int>>& grid) {
+        int row = grid.size(), col = row;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+               if( (i==j || i+j==row-1) ){
+                   if(grid[i][j]!=0) continue;
+               }
+               else if(grid[i][j]==0) continue;
+               return false;
+            }
+        }
+        return true;
+    }
+};
