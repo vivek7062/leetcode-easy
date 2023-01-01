@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/count-the-digits-that-divide-a-number/
+// Answer in cpp
+
+class Solution {
+public:
+    int countDigits(int num) {
+        int temp = num;
+        int ans=0;
+        while(temp){
+            int rem = temp %10;
+            temp/=10;
+            if(rem!=0){
+                if(num%rem==0) ans++;
+            } else{
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
