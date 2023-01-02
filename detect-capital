@@ -1,0 +1,18 @@
+// Question - https://leetcode.com/problems/detect-capital/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int capCount = 0, len = word.size(), capIndex=0;
+        for(int i=0;i<len;i++){
+            int ch = word[i];
+            if(ch>=65 && ch<=90){
+                capCount++;
+                capIndex=i;
+            } else if(capCount>1) return false;
+        }
+        return (capCount==len||capCount==0||(capCount==1 && capIndex==0))?true:false;
+    }
+};
