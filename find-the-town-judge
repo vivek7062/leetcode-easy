@@ -1,0 +1,17 @@
+// Question - https://leetcode.com/problems/find-the-town-judge/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        map<int,set<int>> mp;
+        map<int,int> freq;
+        for(auto& people : trust){
+            freq[people[0]]++;
+            mp[people[1]].insert(people[0]);
+        }
+        for(int i=1;i<=n;i++) if(freq[i]==0 && mp[i].size()==n-1) return i;
+        return -1;
+    }
+};
