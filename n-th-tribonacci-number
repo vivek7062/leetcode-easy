@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/n-th-tribonacci-number/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int tribonacci(int n) {
+        int first = 0, second = 1, third = 1, temp;
+        if(n==0) return 0;
+        while(n-2>0){
+            temp = third;
+            third = first + second + third;
+            first =  second;
+            second = temp;
+            n--;
+        }
+        return third;
+    }
+    
+};
