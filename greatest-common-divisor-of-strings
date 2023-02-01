@@ -1,0 +1,27 @@
+// Question - https://leetcode.com/problems/greatest-common-divisor-of-strings/
+// Answer in cpp
+
+
+If is there any substring which devide to both string then alwayes will be str1+str2 == str2+str1 otherwise we will return ""
+
+As we can see we need to return maximum length substring
+Ex. str1 = ABABAB , str2 = ABAB
+
+If we take ABAB then if we devide str1 then AB will be remaining so we can't take ABAB so now we are taking only AB that will complete devide our both strings.
+
+So we are take GCD because we need to find maximum length of substring which will devide both string length completly so our answer string lenght will be GCD(len1,len2).
+
+Complexity
+Time complexity:
+O(LogN)
+
+Space complexity:
+O(1)
+
+Code
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+        return str1+str2==str2+str1?str1.substr(0,gcd(str1.size(),str2.size())):"";
+    }
+};
