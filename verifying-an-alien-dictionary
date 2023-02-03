@@ -1,0 +1,17 @@
+// Question - https://leetcode.com/problems/verifying-an-alien-dictionary/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool isAlienSorted(vector<string>& words, string order) {
+        map<char,int> mp;
+        for(int i=0; i<order.size();i++) mp[order[i]] = i+1;
+        for(int i=0;i<words.size();i++){
+            for(int j=0;j<words[i].size();j++) words[i][j] = mp[words[i][j]];
+        }
+        vector<string> temp = words;
+        sort(words.begin(),words.end());
+        return temp==words;
+    }
+};
