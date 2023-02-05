@@ -1,0 +1,23 @@
+// Question - https://leetcode.com/problems/take-gifts-from-the-richest-pile/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    long long pickGifts(vector<int>& gifts, int k) {
+        long long int ans=0;
+        priority_queue<long> pq;
+        for(auto& gift:gifts) pq.push(gift);
+        while(k--){
+            int gift = pq.top();
+            pq.pop();
+            pq.push(sqrt(gift));
+        }
+        while(!pq.empty()){
+            ans+=pq.top();
+            pq.pop();
+        }
+        return ans;
+    }
+};
