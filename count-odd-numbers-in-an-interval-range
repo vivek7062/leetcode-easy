@@ -1,0 +1,42 @@
+// Question - https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
+// Answer in cpp
+
+
+For this question there is only 3 cases
+
+case : 1 - If low and high both are odd
+Ex - 1. low =3 and high = 5
+then total odd number will be 2+ (high-low)/2 -1 => 1+(high-low)/2
+=> 2+ (5-3)/2 -1 = 2 (3,5 is odd only)
+2. low = 5 and high = 5
+=> 2 + (5-5)/2 -1 = 1 (5 is odd only)
+
+case : 2 - Either low is odd or high is odd
+Ex - 1. low = 5 and high = 6
+then total odd number will be 1+ (high-low)/2
+=> 1 + (6-5)/2 = 1 (5 is odd only)
+2. low = 4 and high = 9
+=> 1 + (9-4)/2 = 3 (5,7,9 is odd only)
+
+case : 3 Both low and high is even
+Ex - 1. low =4 and high = 6
+then total odd number will be (high-low)/2
+=> (6-4)/2 = 1 (5 odd only)
+Ex - 2. low = 4 and high = 10
+=> (10-4)/2 = 3 (5,7,9 is odd only)
+
+Please upvote if you like my efforts
+Complexity
+Time complexity:
+O(1)
+
+Space complexity:
+O(1)
+
+Code
+class Solution {
+public:
+    int countOdds(int low, int high) {
+        return low%2==0 && high%2==0 ? (high-low)/2 : 1+(high-low)/2;
+    }
+};
