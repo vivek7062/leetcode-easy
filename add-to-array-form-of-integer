@@ -1,0 +1,22 @@
+// Question - https://leetcode.com/problems/add-to-array-form-of-integer/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<int> addToArrayForm(vector<int>& nums, int k) {
+        int len = nums.size()-1,carry=0;
+
+        while(k || carry){
+            int num =0;
+            if(len>=0) num = nums[len];
+            int digit = carry+num+(k%10);
+            k/=10;
+            carry = digit/10;
+            if(len>=0)nums[len--] = digit%10;
+            else nums.insert(nums.begin(),digit%10);
+        }
+
+        return nums;
+    }
+};
