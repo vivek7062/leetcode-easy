@@ -1,0 +1,14 @@
+// Question - https://leetcode.com/problems/teemo-attacking/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int findPoisonedDuration(vector<int>& timeSeries, int duration) {
+        int ans = 0, len = timeSeries.size();
+        for(int i=0;i<len;i++){
+           ans+=(i!=len-1)&&timeSeries[i]+duration>=timeSeries[i+1]?timeSeries[i+1]-timeSeries[i]:duration;
+        }
+        return ans;
+    }
+};
