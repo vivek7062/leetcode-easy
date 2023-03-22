@@ -1,0 +1,30 @@
+// Question - https://leetcode.com/problems/number-of-even-and-odd-bits/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<int> evenOddBit(int n) {
+        int even=0,odd=0;
+        decToBinary(n,even,odd);
+        return {even,odd};
+        
+    }
+    void decToBinary(int n,int &even, int &odd)
+    {
+        int binaryNum[32];
+        int i = 0;
+        while (n > 0) {
+            binaryNum[i] = n % 2;
+            n = n / 2;
+            i++;
+        }
+        int count =0;
+        for (int j =0; j <= i - 1; j++){
+            if(binaryNum[j]==1 && count%2==0) even++;
+            else if(binaryNum[j]==1 && count%2!=0) odd++;
+            count++;
+        }
+           
+    }
+};
