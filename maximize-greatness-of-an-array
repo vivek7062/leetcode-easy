@@ -1,0 +1,20 @@
+// Question - https://leetcode.com/problems/maximize-greatness-of-an-array/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int maximizeGreatness(vector<int>& nums) {
+        int ans=0;
+        sort(nums.begin(),nums.end());
+        vector<int> temp = nums; 
+        for(auto& val:temp){
+            int index = upper_bound(nums.begin(),nums.end(),val)-nums.begin();
+            if(index<nums.size()){
+                ans++;
+                nums[index]=-1;
+            }
+        }
+        return ans;
+    }
+};
