@@ -1,0 +1,29 @@
+// Question - https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements/description/
+// Answer in cpp
+
+
+
+class Solution {
+public:
+    long long findScore(vector<int>& nums) {
+        long long int ans = 0;
+        int len = nums.size();
+        set<int> temp(nums.begin(),nums.end());
+        map<int,vector<int>> mp;
+        for(int i=0;i<nums.size();i++) mp[nums[i]].push_back(i);
+        
+        for(auto& val:temp){
+            for(auto& m:mp[val]){
+                if(nums[m]!=-1){
+                    ans+=nums[m];
+                    nums[m]=-1;
+                    if(m>0) nums[m-1]=-1;
+                    if(m<len-1) nums[m+1]=-1;
+                    
+                }
+            }
+        }
+
+        return ans;
+    }
+};
