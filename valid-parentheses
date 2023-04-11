@@ -3,44 +3,20 @@
 
 class Solution {
 public:
-    stack<char> st;
     bool isValid(string s) {
-        for(int i=0;i<s.length();i++){
-            if(s[i]=='(' || s[i]=='{' || s[i]=='['){
-                st.push(s[i]);
-            }
-            else{
-                
-                if(!st.empty()){
-                     if(st.top()=='('){
-                    if(s[i]==')'){
-                        st.pop();
-                    } else{
-                        return false;
-                    }
-                } else if(st.top()=='['){
-                    if(s[i]==']'){
-                        st.pop();
-                    } else{
-                        return false;
-                    }
-                }
-                else if(st.top()=='{'){
-                    if(s[i]=='}'){
-                        st.pop();
-                    } else{
-                        return false;
-                    }
-                }
-                } else{
-                    return false;
-                }
-                
-               
+        stack<char> st;
+        for(auto& ch:s){
+            if(ch=='(' || ch=='{' || ch=='['){
+                st.push(ch);
+            }else{
+                if(st.empty()) return false;
+                char temp = st.top();
+                st.pop();
+                if(temp=='(' &&  ch!=')') return false;
+                if(temp=='{' &&  ch!='}') return false;
+                if(temp=='[' &&  ch!=']') return false;
             }
         }
-        
-        return st.empty() ? true : false;
-        
+        return st.empty();
     }
 };
