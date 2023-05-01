@@ -1,0 +1,14 @@
+// Question - https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
+// Answer in cpp
+
+
+class Solution {
+public:
+    double average(vector<int>& salary) {
+        int len = salary.size();
+        double ans = 0, div = len-2; 
+        sort(salary.begin(),salary.end());
+        for(int i=1;i<len-1;i++) ans += (salary[i]/div);
+        return ans;
+    }
+};
