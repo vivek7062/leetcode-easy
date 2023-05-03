@@ -1,0 +1,29 @@
+// Question - https://leetcode.com/problems/find-the-difference-of-two-arrays/
+// Answer in cpp
+
+
+class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        map<int,int> mp1,mp2,mp3,mp4;
+        vector<int> v1,v2;
+        for(auto& num:nums2){
+            mp2[num]++;
+        }
+        for(auto& num:nums1){
+            mp1[num]++;
+            if(mp2[num]==0 && mp3[num]==0) {
+                v1.push_back(num);
+                mp3[num]++;
+            }
+        }
+        for(auto& num:nums2){
+            if(mp1[num]==0 && mp4[num]==0) {
+                v2.push_back(num);
+                mp4[num]++;
+            }
+        }
+
+        return {v1,v2};
+    }
+};
