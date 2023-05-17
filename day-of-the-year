@@ -1,0 +1,30 @@
+// Question - https://leetcode.com/problems/day-of-the-year/
+// Answer in cpp
+
+
+class Solution {
+public:
+    int dayOfYear(string date) {
+        int days = 0;
+        string year="",month="",day="";
+        int year1=0,month1=0, count=0;
+        for(auto&ch:date){
+            if(ch=='-') count++;
+            else{
+                if(count==0)year+=ch;
+                else if(count==1) month+=ch;
+                else day+=ch; 
+            }
+        }
+        year1 = stoi(year);
+        month1 = stoi(month);
+        days = stoi(day);
+        int leaf = 28;
+        if(year1%4==0 && year1!=1900) leaf = 29;
+        vector<int> dates = {31,leaf,31,30,31,30,31,31,30,31,30,31};
+        for(int i=0;i<month1-1;i++){
+            days+=dates[i];
+        }
+        return days;
+    }
+};
