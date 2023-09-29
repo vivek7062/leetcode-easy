@@ -1,0 +1,17 @@
+// Question - https://leetcode.com/problems/monotonic-array/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        bool dec = false, inc = false;
+        for(int i=1;i<nums.size();i++){
+            if(nums[i-1]<nums[i]) inc = true;
+            if(nums[i-1]>nums[i]) dec = true;
+            if(nums[i-1]<nums[i] && dec) return false;
+            if(nums[i-1]>nums[i] && inc) return false;
+        }
+        return true;
+    }
+};
