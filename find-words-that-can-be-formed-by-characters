@@ -1,0 +1,25 @@
+// Question - https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/
+// Answer in cpp
+
+class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        int ans=0;
+        map<char,int> mp;
+        for(auto& c:chars) mp[c]++;
+        for(auto& st:words){
+            map<char,int> m;
+            bool flag=true;
+            for(auto& c:st){
+                m[c]++;
+                if(mp[c]<m[c]){
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag) ans+=st.size();
+        }
+    
+        return ans;
+    }
+};
