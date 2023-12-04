@@ -1,0 +1,21 @@
+// Question - https://leetcode.com/problems/largest-3-same-digit-number-in-string/
+// Answer in cpp
+
+class Solution {
+public:
+    string largestGoodInteger(string num) {
+        string ans= "";
+        priority_queue<int> pq;
+        ans+=num[0];
+        int count = 1;
+        for(int i=1;i<num.size();i++){
+            (num[i]==ans[0])?(ans+=num[i],count++):(ans=num[i],count=1);
+            if(count==3) {
+                pq.push(stoi(ans));
+                ans = num[i];
+                count=1;
+            }
+        }
+        return pq.size()==0?"":(pq.top()==0?"000":to_string(pq.top()));
+    }
+};
