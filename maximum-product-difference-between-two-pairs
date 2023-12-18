@@ -1,0 +1,22 @@
+// Question - https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
+// Answer in cpp
+
+class Solution {
+public:
+    int maxProductDifference(vector<int>& nums) {
+        priority_queue<int> p1,p2;
+        for(auto& num: nums){
+            p1.push(-num);
+            p2.push(num);
+            if(p1.size()>2)p1.pop();
+            if(p2.size()>2)p2.pop();
+        }
+        int a = p2.top();
+        p2.pop();
+        a *= p2.top();
+        int b = p1.top();
+        p1.pop();
+        b *= p1.top();
+        return b-a;
+    }
+};
