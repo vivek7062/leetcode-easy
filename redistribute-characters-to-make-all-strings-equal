@@ -1,0 +1,16 @@
+// Question - https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/
+// Answer in cpp
+
+
+class Solution {
+public:
+    bool makeEqual(vector<string>& words) {
+        map<int,int> mp;
+        for(auto& str:words) {
+            for(auto& c:str) mp[c-'a']++;
+        };
+        for(auto& m:mp) if(m.second%words.size()!=0) return false;
+
+        return true;
+    }
+};
